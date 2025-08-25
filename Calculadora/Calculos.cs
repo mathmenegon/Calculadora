@@ -32,9 +32,9 @@ namespace Calculadora
                         Multiplicacao(); break;
                     case 4:
                         Divisao(); break;
-                    case 5:
-                        break;
-                }
+                    default:
+                        MenuSelecao(); break;
+            }
         }
 
         static (double v1, double v2) ObterDados()
@@ -58,36 +58,27 @@ namespace Calculadora
 
         static double Subtracao()
         {
-            Console.WriteLine("Digite o primeiro valor:");
-            double v1 = double.Parse(Console.ReadLine()!);
-            Console.WriteLine("Digite o segundo valor:");
-            double v2 = double.Parse(Console.ReadLine()!);
+            var dados = ObterDados();
 
-            var resultadoSubtracao = v1 - v2;
+            var resultadoSubtracao = dados.v1 - dados.v2;
             Console.WriteLine($"O resultado da subtração é: {resultadoSubtracao}");
             return resultadoSubtracao;
         }
 
         static double Multiplicacao()
         {
-            Console.WriteLine("Digite o primeiro valor:");
-            double v1 = double.Parse(Console.ReadLine()!);
-            Console.WriteLine("Digite o segundo valor:");
-            double v2 = double.Parse(Console.ReadLine()!);
+            var dados = ObterDados();
 
-            var resultadoMultiplicacao = v1 * v2;
+            var resultadoMultiplicacao = dados.v1 * dados.v2;
             Console.WriteLine($"O resultado da subtração é: {resultadoMultiplicacao}");
             return resultadoMultiplicacao;
         }
 
         static double Divisao()
         {
-            Console.WriteLine("Digite o primeiro valor:");
-            double v1 = double.Parse(Console.ReadLine()!);
-            Console.WriteLine("Digite o segundo valor:");
-            double v2 = double.Parse(Console.ReadLine()!);
+            var dados = ObterDados();
 
-            var resultadoDivisao = v1 / v2;
+            var resultadoDivisao = dados.v1 / dados.v2;
             Console.WriteLine($"O resultado da subtração é: {resultadoDivisao}");
             return resultadoDivisao;
         }
