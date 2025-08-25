@@ -37,15 +37,21 @@ namespace Calculadora
                 }
         }
 
-
-        static double Soma()
+        static (double v1, double v2) ObterDados()
         {
             Console.WriteLine("Digite o primeiro valor:");
             double v1 = double.Parse(Console.ReadLine()!);
             Console.WriteLine("Digite o segundo valor:");
             double v2 = double.Parse(Console.ReadLine()!);
+            return (v1, v2);
+        }
+        
 
-            var resultadoSoma = v1 + v2;
+        static double Soma()
+        {
+            var dados = ObterDados();
+
+            var resultadoSoma = dados.v1 + dados.v2;
             Console.WriteLine($"O resultado da soma é: {resultadoSoma}");
             return resultadoSoma;
         }
