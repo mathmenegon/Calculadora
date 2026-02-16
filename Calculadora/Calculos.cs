@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Runtime.Intrinsics;
 using System.Security.Cryptography.X509Certificates;
@@ -20,7 +21,8 @@ namespace Calculadora
                 Console.WriteLine("2 - Subtração");
                 Console.WriteLine("3 - Multiplicação");
                 Console.WriteLine("4 - Divisão");
-                Console.WriteLine("5 - Sair");
+                Console.WriteLine("5 - Potência");
+                Console.WriteLine("6 - Sair");
                 Console.WriteLine("\nDigite o numero da operação desejada:");
 
                 double operacao = double.Parse(Console.ReadLine()!);
@@ -36,6 +38,8 @@ namespace Calculadora
                     case 4:
                         Divisao(); break;
                     case 5:
+                        Potencia(); break ;
+                    case 6:
                         return;
                     default:
                         Console.WriteLine("Opção inválida! Pressiona Enter para continuar"); break;
@@ -56,40 +60,49 @@ namespace Calculadora
         }
         
 
-        static double Soma()
+        static void Soma()
         {
             var dados = ObterDados();
 
             var resultadoSoma = dados.v1 + dados.v2;
             Console.WriteLine($"O resultado da soma é: {resultadoSoma}");
-            return resultadoSoma;
         }
 
-        static double Subtracao()
+        static void Subtracao()
         {
             var dados = ObterDados();
 
             var resultadoSubtracao = dados.v1 - dados.v2;
             Console.WriteLine($"O resultado da subtração é: {resultadoSubtracao}");
-            return resultadoSubtracao;
         }
 
-        static double Multiplicacao()
+        static void Multiplicacao()
         {
             var dados = ObterDados();
 
             var resultadoMultiplicacao = dados.v1 * dados.v2;
-            Console.WriteLine($"O resultado da subtração é: {resultadoMultiplicacao}");
-            return resultadoMultiplicacao;
+            Console.WriteLine($"O resultado da multiplicação é: {resultadoMultiplicacao}");
         }
 
-        static double Divisao()
+        static void Divisao()
+        {
+            var dados = ObterDados();
+            if (dados.v2 == 0)
+            {
+                Console.WriteLine("Não é possível dividir por zero!");
+                return;
+            }
+            
+            var resultadoDivisao = dados.v1 / dados.v2;
+            Console.WriteLine($"O resultado da divisão é: {resultadoDivisao}");
+        }
+
+        static void Potencia()
         {
             var dados = ObterDados();
 
-            var resultadoDivisao = dados.v1 / dados.v2;
-            Console.WriteLine($"O resultado da subtração é: {resultadoDivisao}");
-            return resultadoDivisao;
+            var resultadoPotencia = Math.Pow(dados.v1, dados.v2);
+            Console.WriteLine($"O resultado do calculode de potencia é: {resultadoPotencia}"); 
         }
     }
 }
